@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .hexagon {
+            position: relative;
+            background-image: url("hexagon.png");
+            background-size: 100%;
+
+            width: 200px;
+            height: 200px;
+            margin: 0;
+            padding: 0;
+            /* float: left; */
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            var mapSize;
+            console.log($('#mapSize').val());
+            $('#mapSize').on('change', genHexagon);
+
+
+
+
+
+            function genHexagon() {
+                mapSize = $('#mapSize').val();
+                $("#editor").empty();
+
+
+
+                console.log(mapSize)
+                for (var i = 0; i < mapSize * 4; i++) {
+
+                    var hex = $('<div>').addClass("hexagon");
+                    if (i % 2 != 0) {
+                        console.log("UP" + hex.css("top"));
+                        hex.position().top += 5;
+                    } else { console.log("DOWN" + hex.position().left); }
+                    $('#editor').append(hex);
+                }
+                $("#editor").width(800 + "px");
+            };
+        });
+    </script>
+</head>
+
+<body>
+    <select name="mapSize" id="mapSize">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+
+    </select>
+    <div id="editor"></div>
+</body>
+
+</html>
