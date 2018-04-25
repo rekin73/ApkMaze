@@ -1,0 +1,63 @@
+.hexagon{
+    position: relative;  
+    overflow:hidden;
+    position: absolute;
+    width:50px;
+    height:50px;
+    background-position: center;
+    background: url("hex2.png");
+    background-size: 50px 50px;
+}
+
+.komurka {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-bottom: 2px;
+    background-position: center;
+    background: url("hexagon.png");
+    background-size: 100px 100px;
+}
+
+.hexagon img{
+    width:50px;
+    height:50px;
+    left:0;
+    top:0;
+}
+
+.kierunek img{
+    width:20px;
+    height:20px;
+    left:10px;
+    top:10px;
+}
+
+#plansza{
+    position:relative;
+}
+
+#json {
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    left: 600px;
+    border:1px solid black;
+}
+
+#t_json {
+    width: 200px;
+    height: 400px;
+}
+
+.strzala {
+    position: relative;
+    top:10px;
+    left:10px;
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    background: url("ArrowUp.png");
+    background-size: 30px 30px;
+}
