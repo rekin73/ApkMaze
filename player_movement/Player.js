@@ -8,7 +8,8 @@ function Player() {
         side: THREE.DoubleSide,
         wireframe: false,
         transparent: true,
-        opacity: 0.8
+        opacity: 0.8,
+        
     });
 
     var player = new THREE.Mesh(geometry, material); // player sześcian
