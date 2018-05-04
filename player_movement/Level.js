@@ -7,7 +7,7 @@ var Level=new LevelData().getLevelData();
  for(var i=0;i<Level.size;i++){
     for(var j=0;j<Level.size;j++){
         var hex=new Hex().getHex()
-        hex.position.set(200*(Math.sqrt(3)/2)*i,0,200*(Math.sqrt(3)/2)*i)
+        hex.position.set(300*(Math.sqrt(3)/2)*i,0,300*(Math.sqrt(3)/2)*i)
         container.add(hex)
     }
 
