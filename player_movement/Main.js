@@ -17,7 +17,7 @@ function Main() {
     $("#root").append(renderer.domElement);
     var axes = new THREE.AxesHelper(1000)
     scene.add(axes)
-    camera.position.set(150, 150, 150)
+    camera.position.set(0, 300, 150)
     camera.lookAt(scene.position);
     $(document).keydown(function (e) {
         console.log(e.which)

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Particles</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="three.js"></script>
+    <script>
+        $(document).ready(function () {
+            var scene = new THREE.Scene();
+
+            var camera = new THREE.PerspectiveCamera(
+                45, // kąt patrzenia kamery (FOV - field of view)
+                window.innerWidth / window.innerHeight, // proporcje widoku, powinny odpowiadać proporjom naszego ekranu przeglądarki
+                0.1, // minimalna renderowana odległość
+                10000 // maxymalna renderowana odległość
+            );
+
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setClearColor(0x0);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.position.set(200, 200, 200)
+
+            var material = new THREE.MeshBasicMaterial({
+                color: 0xff6600,
+                transparent: true,
+                opacity: 0.5,
+                depthWrite: false,
+                blending: THREE.AdditiveBlending // kluczowy element zapewniający mieszanie kolorów poszczególnych cząsteczek
+            });
+            var geometry = new THREE.BoxGeometry(1, 1, 1)
+            //var cube = new THREE.Mesh(geometry, material)
+            var axes = new THREE.AxesHelper(1000)
+            var array = [];
+            particleAmount=100;
+            var generate = function () {
+
+                for (var i = 0; i < particleAmount; i++) {
+                    var skala = Math.floor((Math.random() * 5) + 1)
+                    console.log(skala)
+                    var particle = new THREE.Mesh(geometry, material.clone())
+                    particle.scale.set(skala, skala, skala)
+                    array[i] = particle;
+                    array[i].position.set(((Math.random() * 100) + 1), 0, ((Math.random() * 20) + 1))
+                    scene.add(array[i])
+                }
+            }
+            var update = function () {
+                for (var i = 0; i < array.length; i++) {
+                    if(array[i].position.y<30){
+                    array[i].position.y +=Math.random()*1.05
+                    array[i].material.opacity-=0.01
+                    }else{
+                        array[i].position.y=Math.random() * 5
+                        array[i].position.x=Math.random() * 100
+                        array[i].position.z=Math.random() * 20
+                        array[i].material.opacity=1
+                    }
+                }
+            }
+            generate();
+            scene.add(axes);
+            //scene.add(cube);
+
+
+            function render() {
+                update()
+                // cube.rotation.y += 0.01;
+
+                //w tym miejscu ustalamy wszelkie zmiany w projekcie (obrót, skalę, położenie obiektów)
+                //np zmieniająca się wartość rotacji obiektu
+
+                //mesh.rotation.y += 0.01;
+
+                //wykonywanie funkcji bez końca ok 60 fps jeśli pozwala na to wydajność maszyny
+
+
+
+                requestAnimationFrame(render);
+
+                //ciągłe renderowanie / wyświetlanie widoku sceny nasza kamerą
+
+                renderer.render(scene, camera);
+
+            }
+            camera.lookAt(scene.position)
+            $("#root").append(renderer.domElement);
+
+
+            render();
+        })
+    </script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>

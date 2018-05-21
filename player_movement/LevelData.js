@@ -1,7 +1,7 @@
 function LevelData() {
     var obj =
         {
-            "size": "3",
+            "size": "4",
             "level": [
                 {
                     "id": "0",

@@ -21,6 +21,8 @@ var material= new THREE.MeshBasicMaterial({
         
     }   
 
+
+
 //container.add(wall)
     this.getHex = function () {
         return container
