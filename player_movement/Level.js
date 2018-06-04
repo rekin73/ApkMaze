@@ -10,7 +10,7 @@ var h= (Math.sqrt(3)/2)*200;
 
         if(i%2==1){
             var hex=new Hex().getHex()
-            hex.position.set(w*(3/4)*i,0,h*i)
+            hex.position.set(w*(3/4)*i,0,(2*h*j)+h)
             container.add(hex)
         }else{
             var hex=new Hex().getHex()
